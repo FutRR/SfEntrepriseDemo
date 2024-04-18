@@ -43,7 +43,7 @@ class EntrepriseType extends AbstractType
             ])
             ->add('valider', SubmitType::class, [
                 "attr" => [
-                    'class' => "form-control"
+                    'class' => "btn btn-success"
                 ]
             ])
 

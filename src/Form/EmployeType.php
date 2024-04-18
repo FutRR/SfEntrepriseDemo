@@ -40,6 +40,7 @@ class EmployeType extends AbstractType
                 ]
             ])
             ->add('ville', TextType::class, [
+                "required" => false,
                 "attr" => [
                     'class' => "form-control"
                 ]
@@ -53,7 +54,7 @@ class EmployeType extends AbstractType
             ])
             ->add('valider', SubmitType::class, [
                 "attr" => [
-                    'class' => "btn btn-primary"
+                    'class' => "btn btn-success"
                 ]
             ]);
         ;
