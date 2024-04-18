@@ -5,15 +5,23 @@
 {% block body %}
     <h1>Liste des entreprises</h1>
 
-    {% for entreprise in entreprises %}
-        <a href="{{ path('show_entreprise', {'id': entreprise.id}) }}">{{ entreprise }}</a>
-        <div class="container">
-        <a class="btn btn-warning" href="{{ path('edit_entreprise', {'id': entreprise.id}) }}">Edit</a>
-        <a class="btn btn-danger" href="{{ path('delete_entreprise', {'id': entreprise.id}) }}">Supp</a>
-    </div>
-<br>
-    {% endfor %}
-    
 
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Entreprise</th>
+                <th>Edit</th>
+                <th>Supp</th>
+            </tr>
+        </thead>
+        <tbody>
+
+    {% for entreprise in entreprises %}
+        <tr><td><a class="link-underline-opacity-0 link-underline-opacity-0-hover" href="{{ path('show_entreprise', {'id': entreprise.id}) }}">{{ entreprise }}</a></td>
+        <td><a class="btn btn-warning" href="{{ path('edit_entreprise', {'id': entreprise.id}) }}">Edit</a></td>
+        <td><a class="btn btn-danger" href="{{ path('delete_entreprise', {'id': entreprise.id}) }}">Supp</a></td></tr>
+    {% endfor %}
+        </tbody>
+    </table>
     
 {% endblock %}

@@ -5,7 +5,7 @@
 {% block body %}
     <h1>Détails d'une entreprise</h1>
 
-    <h2>{{ entreprise.raisonSociale }}</h2>
+    <h2>{{ entreprise.raisonSociale }} | <a href="{{path('show_categorie', {'id':entreprise.categorie.id}) }}"> {{ entreprise.categorie }} </a></h2>
 
     <p>
         Adresse : {{ entreprise.adresseComplete }} <br>
@@ -31,8 +31,13 @@
     </tbody>
 </table>
 
+
     {% else %}
         <p>Aucun salarié dans cette entreprise</p>
     {% endif %}
+
+    <a class="btn btn-warning" href="{{ path('edit_entreprise', {'id': entreprise.id}) }}">Edit</a>
+<a class="btn btn-danger" href="{{ path('delete_entreprise', {'id': entreprise.id}) }}">Supp</a>
+
 
 {% endblock %}

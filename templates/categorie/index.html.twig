@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des catégories{% endblock %}
+
+{% block body %}
+<h1>Liste des catégories</h1>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Catégorie</th>
+            <th>Edit</th>
+            <th>Supp</th>
+        </tr>
+    </thead>
+    <tbody>
+
+{% for categorie in categories %}
+    <tr><td><a class="link-underline-opacity-0 link-underline-opacity-0-hover" href="{{ path('show_categorie', {'id': categorie.id}) }}">{{ categorie }}</a></td>
+    <td><a class="btn btn-warning" href="{{ path('edit_categorie', {'id': categorie.id}) }}">Edit</a></td>
+    <td><a class="btn btn-danger" href="{{ path('delete_categorie', {'id': categorie.id}) }}">Supp</a></td></tr>
+{% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

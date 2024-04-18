@@ -40,6 +40,10 @@ class Entreprise
     #[ORM\OrderBy(["nom" => "ASC"])]
     private Collection $employes;
 
+    #[ORM\ManyToOne(inversedBy: 'Entreprise')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Categorie $Categorie = null;
+
     public function __construct()
     {
         $this->employes = new ArrayCollection();
@@ -153,5 +157,17 @@ class Entreprise
     public function __toString()
     {
         return $this->raisonSociale . ' (' . $this->cp . ' ' . $this->ville . ')';
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->Categorie;
+    }
+
+    public function setCategorie(?Categorie $Categorie): static
+    {
+        $this->Categorie = $Categorie;
+
+        return $this;
     }
 }

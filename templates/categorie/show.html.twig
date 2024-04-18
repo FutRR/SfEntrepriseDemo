@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails d'une categories{% endblock %}
+
+{% block body %}
+    <h1>Détails d'une categorie</h1>
+
+    <h2>{{ categorie }}</h2>
+
+    <h3>Liste des entreprises</h3>
+
+    {% if categorie.entreprise | length > 0 %}
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Entreprise</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for entreprise in categorie.entreprise %}
+            <tr><td><a href="{{path('show_entreprise', {'id':entreprise.id}) }}">{{entreprise}}</a></td></tr>
+        {% endfor %}
+                    
+    </tbody>
+</table>
+
+<a class="btn btn-warning" href="{{ path('edit_categorie', {'id': categorie.id}) }}">Edit</a>
+<a class="btn btn-danger" href="{{ path('delete_categorie', {'id': categorie.id}) }}">Supp</a>
+
+    {% else %}
+        <p>Aucune entreprise dans cette categorie</p>
+    {% endif %}
+
+{% endblock %}
